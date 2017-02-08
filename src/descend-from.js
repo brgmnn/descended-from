@@ -1,14 +1,19 @@
-const hasSelector = (node, selector) => {
-  const classes = ` ${node.classList} `;
-  return classes.includes(` ${selector} `);
-};
+const hasClass = (node, className) => ` ${node.classList} `.includes(` ${className} `);
 
 module.exports = (node, from) => {
-  while (node !== document.body) {
-    if (typeof from === 'object' && node === from)
-      return true;
+  if (from && typeof from === 'object')
+    return from.contains(node);
 
-    else if (typeof from === 'string' && hasSelector(node, from))
+  if (typeof from !== 'string')
+    return false;
+
+  from = from.trim();
+
+  if (from.charAt(0) === '#')
+    return document.getElementById(from.replace('#', '')).contains(node);
+
+  while (node !== document.body.parentNode) {
+    if (hasClass(node, from))
       return true;
 
     node = node.parentNode;
