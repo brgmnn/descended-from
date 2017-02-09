@@ -12,13 +12,13 @@ describe('class selectors', () => {
     it("is descended from it's parent", () => {
       const subject = document.getElementById('subject');
 
-      descendedFrom(subject, 'parent').should.equal(true);
+      descendedFrom(subject, '.parent').should.equal(true);
     });
 
     it('is not descended from an unrelated node', () => {
       const subject = document.getElementById('subject');
 
-      descendedFrom(subject, 'stranger').should.equal(false);
+      descendedFrom(subject, '.stranger').should.equal(false);
     })
   });
 });
@@ -77,7 +77,7 @@ describe('the body tag', () => {
     it('can be an ancestor of subject', () => {
       const subject = document.getElementById('subject');
 
-      descendedFrom(subject, 'bodyclass').should.equal(true);
+      descendedFrom(subject, '.bodyclass').should.equal(true);
     });
   });
 

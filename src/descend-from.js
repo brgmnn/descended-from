@@ -12,6 +12,11 @@ module.exports = (node, from) => {
   if (from.charAt(0) === '#')
     return document.getElementById(from.replace('#', '')).contains(node);
 
+  if (from.charAt(0) !== '.')
+    return false;
+
+  from = from.replace('.', '');
+
   while (node !== document.body.parentNode) {
     if (hasClass(node, from))
       return true;
