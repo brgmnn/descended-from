@@ -1,6 +1,6 @@
 import chai from 'chai';
 import loadDom from './utils/load-dom';
-import descendedFrom from '../dist/descended-from.js';
+import descendedFrom from '../src/descended-from.js';
 
 chai.should();
 
