@@ -1,6 +1,10 @@
 {
   "name": "descended-from",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "keywords": [
+    "dom",
+    "html"
+  ],
   "description": "Check if a DOM node is descended from another node or selector.",
   "main": "dist/descended-from.js",
   "scripts": {
