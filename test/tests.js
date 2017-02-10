@@ -89,3 +89,30 @@ describe('the body tag', () => {
     });
   });
 });
+
+describe('invalid ancestor selector', () => {
+  beforeEach(() => loadDom('blank'));
+
+  describe('that is not a string or element', () => {
+    it('returns false for numbers', () => {
+      const subject = document.getElementById('subject');
+
+      descendedFrom(subject, 1).should.equal(false);
+    });
+
+    it('returns false for undefined or null', () => {
+      const subject = document.getElementById('subject');
+
+      descendedFrom(subject, undefined).should.equal(false);
+      descendedFrom(subject, null).should.equal(false);
+    });
+  });
+
+  describe('that is a string', () => {
+    it('returns false', () => {
+      const subject = document.getElementById('subject');
+
+      descendedFrom(subject, 'not found').should.equal(false);
+    });
+  });
+});
