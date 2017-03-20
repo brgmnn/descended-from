@@ -108,6 +108,17 @@ describe('invalid ancestor selector', () => {
     });
   });
 
+  describe('invalid selector', () => {
+    beforeEach(() => loadDom('blank'));
+
+    describe('that is null or undefined', () => {
+      it('returns false', () => {
+        descendedFrom(null, document.body).should.equal(false);
+        descendedFrom(undefined, document.body).should.equal(false);
+      });
+    });
+  });
+
   describe('that is a string', () => {
     it('returns false', () => {
       const subject = document.getElementById('subject');

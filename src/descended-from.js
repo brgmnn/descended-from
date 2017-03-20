@@ -1,4 +1,4 @@
-const hasClass = (node, className) => ` ${node.classList} `.includes(` ${className} `);
+const hasClass = (node, className) => node && ` ${node.classList} `.includes(` ${className} `);
 
 module.exports = (node, from) => {
   if (from && typeof from === 'object')
@@ -17,7 +17,7 @@ module.exports = (node, from) => {
 
   from = from.replace('.', '');
 
-  while (node !== document.body.parentNode) {
+  while (node && node !== document.body.parentNode) {
     if (hasClass(node, from))
       return true;
 
